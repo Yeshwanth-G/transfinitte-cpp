@@ -28,6 +28,7 @@ export default function SignupForm({ onClose }) {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
     const [name, setname] = useState('');
+    const [phone,setphone]=useState('');
 
     const [statusCode, setstatus] = useState(0);
     useEffect(() => {
@@ -39,7 +40,7 @@ export default function SignupForm({ onClose }) {
                         status: 'success',
                         variant: 'left-accent',
                         position: 'bottom-right',
-                        title: `Signed up suxccessfully`,
+                        title: `Signed up successfully`,
                         isClosable: true,
                     }
                 )
@@ -111,6 +112,12 @@ export default function SignupForm({ onClose }) {
                     setcg(event.target.value)
                 }} value={cg} />
             </FormControl>
+            <FormControl paddingY={2}>
+                <FormLabel color={'white'}>Phone</FormLabel>
+                <Input placeholder='Enter your cgpa'  color='blue.200' onChange={(event) => {
+                    setphone(event.target.value)
+                }} value={phone} />
+            </FormControl>
             <HStack
                 pt={10}
                 align='center'
@@ -120,7 +127,7 @@ export default function SignupForm({ onClose }) {
                 <Button colorScheme='blue' mr={3} isLoading={isLoading}
                     onClick={async () => {
                         setLoading(true)
-                        const res = await Signup({ name, rollno, password, email,cgpa:cg });
+                        const res = await Signup({ name, rollno, password, email,cgpa:cg,phone });
                         setstatus(res);
                     }}
                 >

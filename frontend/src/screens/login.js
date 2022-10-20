@@ -42,7 +42,6 @@ export default function Login() {
             shadow='0 0 7px 5px pink'
             >
             <LoginForm id={id}/>
-         
             </HStack>
             </VStack>
         </VStack>

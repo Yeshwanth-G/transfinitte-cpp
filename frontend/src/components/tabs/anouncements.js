@@ -7,9 +7,9 @@ import {
     HStack,
     ModalContent,
     ModalHeader,
-FormControl,
-FormLabel,
-Input,
+    FormControl,
+    FormLabel,
+    Input,
     useDisclosure,
     ModalFooter,
     ModalBody,
@@ -64,8 +64,9 @@ export function Anouncements({ id, role, name }) {
                     left={'80%'}
                     bottom={'75%'}
                     onClick={() => {
+                        let temp=role=='ADMIN'?'admin':'cicrep';
                         navigate(
-                            '../addform',
+                            `/app/${temp}/addform`,
                             {
                                 state: {
                                     id,
@@ -75,7 +76,7 @@ export function Anouncements({ id, role, name }) {
                                 }
                             }
                         )
-                        navigate(0);
+                        navigate(0)
                     }}
                 >
                     <AddIcon />

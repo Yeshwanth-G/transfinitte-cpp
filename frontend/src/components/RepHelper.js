@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { CicRep } from './Cicrep';
-import Details from './details';
-import AddCompany from '../components/forms/addAnnouncements';
-export function Admin() {
+import { Student } from '../screens/Student';
+import Details from '../screens/details';
+import { CicRep } from '../screens/Cicrep';
+import AddCompany from './forms/addAnnouncements';
+export default function RepHelper() {
     return (
         <Routes>
             <Route path='/' element={<CicRep/>} />

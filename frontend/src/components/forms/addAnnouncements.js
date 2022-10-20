@@ -2,15 +2,17 @@ import React, { useState, setState, useEffect } from 'react';
 import { CheckboxGroup, Stack, Text, Checkbox, Wrap, WrapItem, Toast, } from '@chakra-ui/react';
 import './style.css'
 import { useToast } from '@chakra-ui/react';
-import { useLocation } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
+import { useLocation,useNavigate } from 'react-router-dom';
+import { Button,HStack } from '@chakra-ui/react';
 import { AddAnnouncement } from '../../fetchData';
 import { GetDepartments } from '../../fetchData';
 import { addCompany } from '../../fetchData'
 function AddCompany() {
     const toast = useToast();
     const location = useLocation();
+    const navigate=useNavigate();
     const purpose = location.state.purpose;
+    const [changed,setchanged]=useState();
     const pagename = (purpose === 'announce') ? 'Announcement' : 'Company';
     const [companyName, setCompanyName] = useState('');
     const [cgpaCriteria, setCGPACriteria] = useState(0.0);
@@ -48,10 +50,22 @@ function AddCompany() {
             setRole(value);
 
     }
-    useEffect(async () => {
+    const tempf=async ()=>{
+
         const depts = await GetDepartments();
         console.log("All depts", depts);
         setoptions(depts);
+    }
+    useEffect(()=>{
+        console.log("re-rendering compnnet");
+    },[changed])
+    useEffect( () => {
+        tempf().then(()=>{
+
+            console.log("Iam done")
+            setchanged(!changed)
+        }
+        );
     }, [])
     const handleSubmit = async () => {
         let res;

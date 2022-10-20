@@ -81,7 +81,7 @@ export const GetCompanies = async ({ id ,role}) => {
     console.log("from get companies:",jsonRes);
     return jsonRes;
 }
-export const Signup = async ({ name, email, password, rollno ,cgpa}) => {
+export const Signup = async ({ name, email, password, rollno ,cgpa,phone}) => {
 
     const res = await fetch(`${API_URL}/auth/register`, {
         method: 'POST',
@@ -90,7 +90,7 @@ export const Signup = async ({ name, email, password, rollno ,cgpa}) => {
             password,
             id: rollno,
             name,
-            phone: '8978294995',
+            phone,
             cgpa,
         }),
         headers: {

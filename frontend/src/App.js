@@ -12,8 +12,10 @@ import Details from './screens/details';
 import {CicRep}  from './screens/Cicrep';
 import { Student } from './screens/Student';
 import { Admin } from './screens/Admin';
+import RepHelper from './components/RepHelper';
 import Login from './screens/login';
 import AddCompany from './components/forms/addAnnouncements';
+import StudentHelper from './components/studenthelper';
 
 function App() {
   const location = useLocation();
@@ -44,11 +46,9 @@ function App() {
 
           <HStack  w={'100%'} h={'100%'}>
           <Routes>
-            <Route path='/student' element={<Student />} />
-            <Route path='/admin' element={<Admin />} />
-            <Route path='/cicrep' element={<CicRep />} /> 
-            <Route path='/addform' element={<AddCompany/>}/>
-            <Route path='/details' element={<Details/>}/>
+            <Route path='/student/*' element={<StudentHelper />} />
+            <Route path='/cicrep/*' element={<RepHelper />} /> 
+            <Route path='/admin/*' element={<Admin />} />
           </Routes>
           </HStack>
         </div>
